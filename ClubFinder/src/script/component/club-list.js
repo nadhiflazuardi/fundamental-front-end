@@ -1,4 +1,4 @@
-class SearchContainer extends HTMLElement {
+class ClubList extends HTMLElement {
   connectedCallback() {
     this.render();
   }
