@@ -1,14 +1,25 @@
+import './club-item.js';
+
 class ClubList extends HTMLElement {
-  connectedCallback() {
+  set clubs(clubs) {
+    this._clubs = clubs;
     this.render();
   }
-
+  
   render() {
-    this.innerHTML = `
-    <input placeholder="Search football club" id="searchElement" type="search">
-    <button id="searchButtonElement" type="submit">Search</button>
-    `;
+    this.innerHTML = '';
+    this._clubs.forEach(club => {
+      const clubItemElement = document.createElement('club-item');
+      clubItemElement.club = club;
+      this.appendChild(clubItemElement);
+    });
+  }
+
+  renderError(message) {
+    clubListElement.innerHTML = '';
+    clubListElement.innerHTML += `<h2 class="placeholder">${message}</h2>`;
   }
 }
 
-customElements.define('search-container', SearchContainer); 
+customElements.define('club-list', ClubList);
+
