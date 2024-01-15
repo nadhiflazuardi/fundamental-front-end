@@ -8,13 +8,12 @@ const main = () => {
 
   const onButtonSearchClicked = async () => {
     try {
-      const dataSource = new DataSource(renderResult, fallbackResult);
-      const result = await dataSource.searchClub(searchElement.value);
+      const result = await DataSource.searchClub(searchElement.value);
       renderResult(result);
     } catch (message) {
       fallbackResult(message);
     }
-  }
+  };
 
   const renderResult = results => {
     clubListElement.clubs = results;
